@@ -1,4 +1,6 @@
 from main import BooksCollector
+import pytest
+
 
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
@@ -18,7 +20,27 @@ class TestBooksCollector:
 
         # проверяем, что добавилось именно две
         # словарь books_rating, который нам возвращает метод get_books_rating, имеет длину 2
-        assert len(collector.get_books_rating()) == 2
+        assert len(collector.get_books_genre()) == 2
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+    #name = [
+      #  'Лев Толстой «Война и мир», Pоман',
+      #  'Уильям Фолкнер «Звук и ярость», Роман',
+      #  'Джейн Остен «Гордость и предубеждение», Роман',
+       # 'Габриель Гарсиа Маркес «Сто лет одиночества», Роман',
+        #'Джон Толкин «Властелин колец», Фантастика'
+   # ]
+
+    @pytest.mark.parametrize(
+        'name',
+       [
+          'Лев Толстой «Война и мир»',
+          'Джон Толкин «Властелин колец»',
+          'Николай Васильевич Гоголь «Ревизо́р»'
+       ]
+)
+    def test_add_new_book(self, name):
+        collector = BooksCollector()
+        collector.add_new_book(name)
+        assert len(collector.get_books_genre()) == 1
