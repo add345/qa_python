@@ -44,3 +44,16 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book(name)
         assert len(collector.get_books_genre()) == 1
+
+    @pytest.mark.parametrize(
+            'name',
+            [
+                'Фэнни Флэгг «Жареные зеленые помидоры в кафе "Полустанок"»',
+                'Мэри Энн Шеффер, Энни Бэрроуз «Клуб любителей книг и пирогов из картофельных очистков Мэри Энн Шеффер, Энни Бэрроуз»'
+                'Сельма Лагерлёф «Удивительное путешествие Нильса Хольгерссона с дикими гусями по Швеции Сельма Лагерлёф»'
+            ]
+)
+    def test_negative_add_new_book(self, name):
+            collector = BooksCollector()
+            collector.add_new_book(name)
+            assert len(collector.get_books_genre()) == 0
