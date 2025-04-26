@@ -6,10 +6,7 @@ import pytest
 # обязательно указывать префикс Test
 class TestBooksCollector:
 
-    # пример теста:
-    # обязательно указывать префикс test_
-    # дальше идет название метода, который тестируем add_new_book_
-    # затем, что тестируем add_two_books - добавление двух книг
+
     def test_add_new_book_add_two_books(self):
         # создаем экземпляр (объект) класса BooksCollector
         collector = BooksCollector()
@@ -100,3 +97,16 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.books_genre[name] = genre
         assert collector.get_book_genre(name) == genre
+
+    @pytest.mark.parametrize(
+        'name, name2,genre',
+        [
+            ['Книга1', 'Книга2', 'Роман']
+        ]
+    )
+    def test_get_books_with_specific_genre(self, name, name2, genre):
+        collector = BooksCollector()
+        collector.genre.append(genre)
+        collector.books_genre[name] = genre
+        collector.books_genre[name2] = genre
+        assert len(collector.get_books_with_specific_genre(genre)) == 2
