@@ -110,3 +110,14 @@ class TestBooksCollector:
         collector.books_genre[name] = genre
         collector.books_genre[name2] = genre
         assert len(collector.get_books_with_specific_genre(genre)) == 2
+
+    def test_get_books_with_specific_genre_2(self):
+            collector = BooksCollector()
+
+            collector.books_genre = {
+                'Головоломка': 'Мультфильмы',
+                'Оно': 'Ужасы',
+                'Гарри Поттер': 'Фантастика',
+                'Мумий Тролль': 'Мультфильмы'
+            }
+            assert len(collector.get_books_with_specific_genre('Мультфильмы')) == 2
