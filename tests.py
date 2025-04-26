@@ -57,3 +57,10 @@ class TestBooksCollector:
             collector = BooksCollector()
             collector.add_new_book(name)
             assert len(collector.get_books_genre()) == 0
+
+    def test_negative1_add_new_book(self):
+        name = 'Николай Васильевич Гоголь «Ревизо́р»'
+        collector = BooksCollector()
+        collector.add_new_book(name)
+        collector.add_new_book(name)
+        assert len(collector.get_books_genre()) == 1
