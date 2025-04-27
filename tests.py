@@ -132,3 +132,14 @@ class TestBooksCollector:
             'Мумий Тролль': 'Мультфильмы'
         }
         assert collector.get_books_genre() == collector.books_genre
+
+    def test_get_books_for_children(self):
+        collector = BooksCollector()
+
+        collector.books_genre = {
+           'Головоломка': 'Мультфильмы',
+           'Оно': 'Ужасы',
+           'Гарри Поттер': 'Фантастика',
+           'Муммий Тролль': 'Мультфильмы'
+        }
+        assert collector.get_books_for_children() == ['Головоломка', 'Гарри Поттер', 'Муммий Тролль']
