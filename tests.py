@@ -157,5 +157,17 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Оно')
         assert 'Оно' in collector.favorites
 
+    def test_delete_book_from_favorites(self):
+        collector = BooksCollector()
 
+        collector.books_genre = {
+           'Головоломка': 'Мультфильмы',
+           'Оно': 'Ужасы',
+           'Гарри Поттер': 'Фантастика',
+           'Муммий Тролль': 'Мультфильмы'
+        }
+
+        collector.add_book_in_favorites('Оно')
+        collector.delete_book_from_favorites('Оно')
+        assert len(collector.favorites ) == 0
 
