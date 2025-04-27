@@ -143,3 +143,19 @@ class TestBooksCollector:
            'Муммий Тролль': 'Мультфильмы'
         }
         assert collector.get_books_for_children() == ['Головоломка', 'Гарри Поттер', 'Муммий Тролль']
+
+    def test_add_book_in_favorites(self):
+        collector = BooksCollector()
+
+        collector.books_genre = {
+           'Головоломка': 'Мультфильмы',
+           'Оно': 'Ужасы',
+           'Гарри Поттер': 'Фантастика',
+           'Муммий Тролль': 'Мультфильмы'
+        }
+
+        collector.add_book_in_favorites('Оно')
+        assert 'Оно' in collector.favorites
+
+
+
